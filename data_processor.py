@@ -26,22 +26,33 @@ def load_and_clean_excel(uploaded_file):
 def execute_instructions(df, instructions):
     if 'filter' in instructions:
         f = instructions['filter']
-        col, op, val = f.get('column'), f.get('operator'), f.get('value')
-        if col in df.columns:
-            if op == '>':
-                df = df[df[col] > val]
-            elif op == '<':
-                df = df[df[col] < val]
-            elif op == '==':
-                df = df[df[col] == val]
-            elif op == '!=':
-                df = df[df[col] != val]
+        if isinstance(f, dict):
+            col, op, val = f.get('column'), f.get('operator'), f.get('value')
+            if col in df.columns:
+                if op == '>':
+                    df = df[df[col] > val]
+                elif op == '<':
+                    df = df[df[col] < val]
+                elif op == '==':
+                    df = df[df[col] == val]
+                elif op == '!=':
+                    df = df[df[col] != val]
     if 'group_by' in instructions and 'aggregate' in instructions:
         group_cols = [c for c in instructions['group_by'] if c in df.columns]
         agg = instructions['aggregate']
-        agg_col, func = agg.get('column'), agg.get('func')
-        if agg_col in df.columns and group_cols:
-            df = df.groupby(group_cols)[agg_col].agg(func).reset_index()
+        if isinstance(agg, list) and isinstance(agg[0], dict):
+            agg = agg[0]
+        elif isinstance(agg, dict):
+            pass
+        else:
+            return pd.DataFrame({"error": ["Invalid aggregation format"]})
+        agg_col = agg.get('column')
+        func = agg.get('func')
+        if agg_col in df.columns and group_cols and func:
+            try:
+                df = df.groupby(group_cols, dropna=False)[agg_col].agg(func).reset_index()
+            except Exception as e:
+                return pd.DataFrame({"error": [f"Aggregation failed: {e}"]})
     if 'select_columns' in instructions:
         cols = [c for c in instructions['select_columns'] if c in df.columns]
         if cols:
