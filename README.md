@@ -22,15 +22,17 @@ Make sure your Excel sheet has headers (like "Name," "Age," "Sales") and a consi
 Give it a try and make your Excel data talk! 😊
 
 
-⚠️ Important Note
-This app is an experimental conversational assistant and may occasionally produce errors or unexpected results due to limitations in data parsing or response interpretation.
+⚠️ Important Note ⚠️
 
-For best results, try using simple, structured prompts like:
 
-What is the average quantity sold per order?
+🚧 This project is currently in development and may have bugs or limited functionality.
 
-Show a histogram of discount distribution.
+You can upload your own Excel (.xlsx) file and ask natural language questions to explore your data. The assistant works best with structured tabular data like sales, finance, or inventory records.
 
-Create a histogram of profit.
+## 🔍 Sample Prompts for Best Results
 
-We’re continuously improving accuracy and flexibility. Thank you for trying it out!
+- What is the average quantity sold per order?  
+- Show a histogram of discount distribution.  
+- Create a histogram of profit  
+
+Please note: Unexpected errors or partial answers may occur as this app is still evolving. Feedback and contributions are welcome!
