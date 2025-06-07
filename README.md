@@ -20,6 +20,8 @@ Just a couple of important notes:
 Don't forget to replace your_key_here with your real Gemini API key.
 Make sure your Excel sheet has headers (like "Name," "Age," "Sales") and a consistent layout.
 Give it a try and make your Excel data talk! 😊
+
+
 ⚠️ Important Note
 This app is an experimental conversational assistant and may occasionally produce errors or unexpected results due to limitations in data parsing or response interpretation.
 
