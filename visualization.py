@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 def plot_bar(df, x_col, y_col):
-    if x_col not in df.columns or y_col not in df.columns:
+    if df.empty or x_col not in df.columns or y_col not in df.columns:
         st.write(df)
         return
     fig, ax = plt.subplots()
@@ -10,10 +10,11 @@ def plot_bar(df, x_col, y_col):
     ax.set_xlabel(x_col)
     ax.set_ylabel(y_col)
     ax.set_title(f"{y_col} by {x_col}")
+    plt.xticks(rotation=45)
     st.pyplot(fig)
 
 def plot_histogram(df, column):
-    if column not in df.columns:
+    if df.empty or column not in df.columns:
         st.write(df)
         return
     fig, ax = plt.subplots()
@@ -23,7 +24,7 @@ def plot_histogram(df, column):
     st.pyplot(fig)
 
 def plot_line(df, x_col, y_col):
-    if x_col not in df.columns or y_col not in df.columns:
+    if df.empty or x_col not in df.columns or y_col not in df.columns:
         st.write(df)
         return
     fig, ax = plt.subplots()
@@ -31,4 +32,16 @@ def plot_line(df, x_col, y_col):
     ax.set_xlabel(x_col)
     ax.set_ylabel(y_col)
     ax.set_title(f"{y_col} over {x_col}")
+    plt.xticks(rotation=45)
     st.pyplot(fig)
+
+def plot_pie(df, column, value):
+    if df.empty or column not in df.columns or value not in df.columns:
+        st.write(df)
+        return
+    fig, ax = plt.subplots()
+    ax.pie(df[value], labels=df[column], autopct='%1.1f%%')
+    ax.set_title(f"{value} by {column}")
+    st.pyplot(fig)
+
+    
