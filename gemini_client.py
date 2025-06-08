@@ -1,13 +1,9 @@
-import os
 import requests
 import json
 import re
-
 import streamlit as st
-API_KEY = st.secrets["GEMINI_API_KEY"]
 
-if not API_KEY:
-    raise ValueError("GEMINI_API_KEY environment variable not set")
+API_KEY = st.secrets["GEMINI_API_KEY"]
 
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
 

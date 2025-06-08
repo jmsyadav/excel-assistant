@@ -20,3 +20,19 @@ Just a couple of important notes:
 Don't forget to replace your_key_here with your real Gemini API key.
 Make sure your Excel sheet has headers (like "Name," "Age," "Sales") and a consistent layout.
 Give it a try and make your Excel data talk! 😊
+
+
+⚠️ Important Note ⚠️
+
+
+🚧 This project is currently in development and may have bugs or limited functionality.
+
+You can upload your own Excel (.xlsx) file and ask natural language questions to explore your data. The assistant works best with structured tabular data like sales, finance, or inventory records.
+
+## 🔍 Sample Prompts for Best Results
+
+- What is the average quantity sold per order?  
+- Show a histogram of discount distribution.  
+- Create a histogram of profit  
+
+Please note: Unexpected errors or partial answers may occur as this app is still evolving. Feedback and contributions are welcome!
